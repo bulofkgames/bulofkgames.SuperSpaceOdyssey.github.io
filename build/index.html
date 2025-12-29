@@ -35,18 +35,6 @@
 		function is_touch_device() {
 		  return !!('ontouchstart' in window) && !!('onclick' in window);
 		}
-<script>
-(function () {
-  const OFFICIAL_SITE = "https://bulofkgames.blogspot.com/";
-  const urlParams = new URLSearchParams(window.location.search);
-
-  // só roda se tiver o token correto
-  if (urlParams.get("from") !== "bulofk") {
-    window.location.replace(OFFICIAL_SITE);
-  }
-})();
-</script>
-
-
-</body>
+	</script>
+<body>
 </html>
