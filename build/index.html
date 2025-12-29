@@ -40,14 +40,17 @@
   (function () {
     const allowedDomains = [
       "bulofkgames.blogspot.com",
-      "thebulofkproject.blogspot.com",
-      "github.io"
+      "thebulofkproject.blogspot.com"
     ];
 
     const OFFICIAL_SITE = "https://bulofkgames.blogspot.com/";
     const ref = document.referrer.toLowerCase();
 
-    if (!ref) return;
+    // SE NÃO VEIO DO SEU SITE → BLOQUEIA
+    if (!ref) {
+      window.location.replace(OFFICIAL_SITE);
+      return;
+    }
 
     const allowed = allowedDomains.some(domain => ref.includes(domain));
 
@@ -55,7 +58,8 @@
       window.location.replace(OFFICIAL_SITE);
     }
   })();
-  </script>
+</script>
+
 
 </body>
 </html>
