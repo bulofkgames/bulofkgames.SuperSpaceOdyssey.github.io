@@ -35,29 +35,16 @@
 		function is_touch_device() {
 		  return !!('ontouchstart' in window) && !!('onclick' in window);
 		}
-	</script>
- <script>
-  (function () {
-    const allowedDomains = [
-      "bulofkgames.blogspot.com",
-      "thebulofkproject.blogspot.com"
-    ];
+<script>
+(function () {
+  const OFFICIAL_SITE = "https://bulofkgames.blogspot.com/";
+  const urlParams = new URLSearchParams(window.location.search);
 
-    const OFFICIAL_SITE = "https://bulofkgames.blogspot.com/";
-    const ref = document.referrer.toLowerCase();
-
-    // SE NÃO VEIO DO SEU SITE → BLOQUEIA
-    if (!ref) {
-      window.location.replace(OFFICIAL_SITE);
-      return;
-    }
-
-    const allowed = allowedDomains.some(domain => ref.includes(domain));
-
-    if (!allowed) {
-      window.location.replace(OFFICIAL_SITE);
-    }
-  })();
+  // só roda se tiver o token correto
+  if (urlParams.get("from") !== "bulofk") {
+    window.location.replace(OFFICIAL_SITE);
+  }
+})();
 </script>
 
 
